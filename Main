@@ -4,6 +4,7 @@
 # cited sources: https://sites.google.com/site/profvanselow/programming/languages/python/variables-data-types-expressions-operators?authuser=0
 # cited sources: https://www.w3schools.com/python/python_conditions.asp
 #cited sources: https://www.studytonight.com/post/the-sep-and-end-parameters-in-python-print-statement
+#cited sources: https://www.kite.com/python/answers/how-to-negate-a-boolean-value-in-python#:~:text=Use%20the%20not%20operator%20to,False%20%2C%20and%20vice%2Dversa.
 def main():
     print("Hello and Welcome to my Project!")
     program_start = True
@@ -15,14 +16,50 @@ def main():
         print("4. Compound words")
         print("5. Your Favorites")
         print("6. Pyramid fun!")
-        print("7. Quit")
+        print("7. Magic number and Learning not")
+        print("8. Quit")
         activity_choice = int(input())
         if activity_choice == 1:
             testScore()
         elif activity_choice == 2:
            hourlyJob()
         elif activity_choice == 3:
-            basicMath()
+            print("Lets do some basic math yay!")
+            # x_value is number that is going to be raised to a power
+            x_value = int(input("Insert a number you want to be raised to a power: "))
+            # input for exponential equation varible = power
+            power = int(input("Insert a number to be the power: "))
+            # ** does the exponential equation
+            print(x_value ** power)
+            print("Now time for some addition and subtraction!")
+            # num1 is the varible we are going to add to.
+            num1 = int(input("Insert a two digit number: "))
+            # num2 is the varible we also are going to add.
+            num2 = int(input("Insert a one digit number: "))
+            print("What happens if we add your two numbers?")
+            # to add we use +
+            print(num1 + num2)
+            print("What happens if we subtract your two numbers?")
+            # use - to subtract
+            print(num1 - num2)
+            print("Lets divide and find the remainer between them as well!")
+            # % helps us find the remainer between two numbers or the Modulus
+            print(num1 % num2)
+            print("We are almost done with our super fun math journey!")
+            # crazy_number1 is a varible in number format however the user wants
+            # crazy_number2 is a varible in number format however the user wants
+            crazy_number1 = float(input("Enter any number you desire: "))
+            crazy_number2 = float(input("Enter any number you desire again: "))
+            print(" We are going to do some floor division which divides to one integer.")
+            # use // to complete floor division process
+            print(crazy_number1 // crazy_number2)
+            print("We are going to find the area of a circle!")
+            radius = int(input("Enter a number to be the radius: "))
+            #library function imports math for us to use pi
+            import math
+            # Call to area formula
+            calculateArea(radius)
+
         elif activity_choice == 4:
             compoundWords()
         elif activity_choice == 5:
@@ -30,6 +67,8 @@ def main():
         elif activity_choice == 6:
             pyramidFun()
         elif activity_choice == 7:
+            booleanTime()
+        elif activity_choice == 8:
             program_start = False
             print("Exiting.")
         else:
@@ -43,12 +82,19 @@ def testScore():
     # number of questions answered correct has a varible of num_answer
     num_answer = int(input("Enter amount of questions you got correct :"))
     # if stament allows only positve numbers to be entered
-    if num_questions > 1 and num_questions > 1:
      # score is equal to num_answer divied by num_questions then multiplied by 100
-        score = (num_answer / num_questions * 100)
-        print("You got a", format(score, '.0f'), "%")
+    score = (num_answer / num_questions * 100)
+    if 90 <=score and score >= 100:
+        grade = 'A'
+    elif 80 <= score and score <= 89:
+        grade = 'B'
+    elif 70 <=  score and score <= 79:
+        grade = 'C'
+    elif 60 <=score and score <= 69:
+        grade = 'D'
     else:
-        print("That's not a vaild number")
+        grade = 'F'
+    print("You got a", format(score, '.0f'), "%.","Which is a", grade)
 
 def hourlyJob():
     print("Lets calculate how much you would get paid at an hourly job per week")
@@ -59,36 +105,7 @@ def hourlyJob():
     # end takes away new line and sep takes away the spaces
     print("You get paied $", format(pay_week, '.2f'), sep='', end='')
     print(" this week!")
-def basicMath():
-    print("Lets do some basic math yay!")
-    # x_value is number that is going to be raised to a power
-    x_value = int(input("Insert a number you want to be raised to a power: "))
-    # input for exponential equation varible = power
-    power = int(input("Insert a number to be the power: "))
-    # ** does the exponential equation
-    print(x_value ** power)
-    print("Now time for some addition and subtraction!")
-    # num1 is the varible we are going to add to.
-    num1 = int(input("Insert a two digit number: "))
-    # num2 is the varible we also are going to add.
-    num2 = int(input("Insert a one digit number: "))
-    print("What happens if we add your two numbers?")
-    # to add we use +
-    print(num1 + num2)
-    print("What happens if we subtract your two numbers?")
-    # use - to subtract
-    print(num1 - num2)
-    print("Lets divide and find the remainer between them as well!")
-    # % helps us find the remainer between two numbers or the Modulus
-    print(num1 % num2)
-    print("We are almost done with our super fun math journey!")
-    # crazy_number1 is a varible in number format however the user wants
-    # crazy_number2 is a varible in number format however the user wants
-    crazy_number1 = float(input("Enter any number you desire: "))
-    crazy_number2 = float(input("Enter any number you desire again: "))
-    print(" We are going to do some floor division which divides to one integer.")
-    # use // to complete floor division process
-    print(crazy_number1 // crazy_number2)
+
 def compoundWords():
     print("We are going to make some compound words!")
     # word_choice is varible user choses from list
@@ -123,6 +140,30 @@ def pyramidFun():
         for y in range(2*x+1):
             print("*",end=" ")
         print()
+def booleanTime():
+    print("lets see how a not equal to and not boolean work")
+    number_boolean= int(input("Enter a number 1- 10:"))
+    # != means not equal
+    while number_boolean != 5:
+        print("Keep searching for the magic number")
+        number_boolean = int(input("Enter a number 1- 10:"))
+    else:
+        print("You found the magic number!")
+    print("Lets move on and learn about NOT ")
+    # set it as true so we can turn it false with not
+    answer= input
+    answer = True
+    print("I've assigned a variable named 'answer' to true")
+    print("If I print the variable with not in front, it will print false. Lets see! ")
+    print(not answer)
+    print("See! Now you learned something about booleans, more specifically NOT!")
+
+def calculateArea(radius):
+ import math
+ area= math.pi * radius ** 2
+ print(format(area,'.2f'))
 
 #call to main
 main()
+
+
