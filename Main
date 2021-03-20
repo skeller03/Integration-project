@@ -16,7 +16,7 @@ def main():
         print("4. Compound words")
         print("5. Your Favorites")
         print("6. Pyramid fun!")
-        print("7. Magic number and Learning not")
+        print("7. Magic number and Learning NOT")
         print("8. Quit")
         activity_choice = int(input())
         if activity_choice == 1:
@@ -81,7 +81,6 @@ def testScore():
     num_questions = int(input("Enter amount of questions on the test :"))
     # number of questions answered correct has a varible of num_answer
     num_answer = int(input("Enter amount of questions you got correct :"))
-    # if stament allows only positve numbers to be entered
      # score is equal to num_answer divied by num_questions then multiplied by 100
     score = (num_answer / num_questions * 100)
     if 90 <=score and score >= 100:
@@ -120,6 +119,8 @@ def compoundWords():
         print("rain" + "bow")
     elif word_choice == "note":
         print("note" + "book")
+    else:
+        print("Wrong input")
     print("How fun was that?!")
 def wordNumber():
     print("Lets have some fun with your favorite word and number!")
@@ -141,14 +142,17 @@ def pyramidFun():
             print("*",end=" ")
         print()
 def booleanTime():
-    print("lets see how a not equal to and not boolean work")
+    print("Lets try and find one of the two magic numbers!")
     number_boolean= int(input("Enter a number 1- 10:"))
     # != means not equal
     while number_boolean != 5:
-        print("Keep searching for the magic number")
+        # or helps tell user to stay between 1-10
+        if number_boolean < 1 or number_boolean > 10:
+            print("Number is not between 1-10!")
+        print("Keep searching for one of the magic numbers")
         number_boolean = int(input("Enter a number 1- 10:"))
     else:
-        print("You found the magic number!")
+        print("You found one of the magic numbers!")
     print("Lets move on and learn about NOT ")
     # set it as true so we can turn it false with not
     answer= input
