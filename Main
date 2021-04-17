@@ -7,7 +7,7 @@ __author__ = "Sydney Keller"
 # cited sources: https://www.w3schools.com/python/python_conditions.asp
 # cited sources: https://www.studytonight.com/post/the-sep-and-end-parameters-in-python-print-statement
 # cited sources: https://www.kite.com/python/answers/how-to-negate-a-boolean-value-in-python#:~:text=Use%20the%20not%20operator%20to,False%20%2C%20and%20vice%2Dversa.
-
+# cited sources: https://www.w3schools.com/python/python_try_except.asp
 
 def main():
     """starting point of program that displays a menu"""
@@ -31,16 +31,28 @@ def main():
         elif activity_choice == 3:
             print("Lets do some basic math yay!")
             # x_value is number that is going to be raised to a power
-            x_value = float(
-                input("Insert a number you want to be raised to a power: "))
+            while True:
+                try:
+                    x_value = float(
+                        input("Insert a number you want to be raised to a "
+                              "power: "))
+                    break
+                except ValueError:
+                    print("Not a number")
             # input for exponential equation variable = power
-            power = float(input("Insert a number to be the power: "))
+            while True:
+                try:
+                    power = float(
+                        input("Insert a number you want to be the power: "))
+                    break
+                except ValueError:
+                    print("Not a number")
             # ** does the exponential equation
             print(x_value ** power)
             print("Now time for some addition and subtraction!")
             # num1 is the variable we are going to add to.
             num1 = int(input("Insert a two digit number: "))
-            while num1 < 10:
+            while 10 > num1 > 99:
                 print("Invalid! Please enter a two digit number:")
                 num1 = int(input())
             else:
@@ -66,8 +78,20 @@ def main():
             # wants
             # crazy_number2 is a variable in number format however the user
             # wants
-            crazy_number1 = float(input("Enter any number you desire: "))
-            crazy_number2 = float(input("Enter any number you desire again: "))
+            while True:
+                try:
+                    crazy_number1 = float(input("Enter any number you "
+                                                "desire: "))
+                    break
+                except ValueError:
+                    print("Not a number")
+            while True:
+                try:
+                    crazy_number2 = float(input("Enter any number you desire "
+                                                "again: "))
+                    break
+                except ValueError:
+                    print("Not a number")
             print(
                 " We are going to do some floor division which divides to "
                 "one integer.")
@@ -167,12 +191,13 @@ prints favorite word that user inputs, the users favorite number of times
     """
     print("Lets have some fun with your favorite word and number!")
     fav_word = str(input("Type your favorite word here: "))
-    fav_number = int(input("Type your favorite number here that is 1-10: "))
-    if 10 >= fav_number >= 1:
-        fav_number = fav_number
-    else:
-        print("Invalid! Please enter a number that is 1-10:")
-        fav_number = int(input())
+    while True:
+        try:
+            fav_number = int(input("Type your favorite number here: "))
+            # break helps stop loop from being infinite
+            break
+        except ValueError:
+            print("Invalid! not a number")
     print("Ready for a surprise?")
     # using * can make a word repeat a number of times
     print(fav_word * fav_number)
@@ -183,11 +208,12 @@ def pyramid_fun():
 prints a pyramid shape of asterisks based off user input
     """
     print("Lets make a pyramid")
-    rows = int(input("Enter amount of rows: "))
-    while rows != int:
-        print("That is not a valid number for rows! Try again")
-        rows = int(input("Enter amount of rows: "))
-        break
+    while True:
+        try:
+            rows = int(input("Enter amount of rows: "))
+            break
+        except ValueError:
+            print("Invalid! not a number")
     # for loop is used because we define how long it runs
     for x in range(rows):
         for y in range(rows - x):
@@ -235,13 +261,14 @@ Calculates area of a circle
     """
     import math
     area = math.pi * radius ** 2
-    print(format(area, '.2f'))
+    print(format(area, '.2f'), "is the area of the circle.")
 
 
 # call to main
 
 
 main()
+
 
 
 
